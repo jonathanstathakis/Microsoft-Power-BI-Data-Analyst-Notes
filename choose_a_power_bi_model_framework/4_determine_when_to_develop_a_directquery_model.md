@@ -1,0 +1,58 @@
+---
+date_created: 2025-06-23 16:06
+url: https://learn.microsoft.com/en-us/training/modules/choose-power-bi-model-framework/4-determine-when-to-develop-directquery-model
+---
+
+# Determine When to Develop a DirectQuery Model
+
+- Models are composed of tables.
+- Intro:
+  - DirectQuery model are tables whose storage mode is set to DirectQuery and belong to the same source group.
+  - source group:
+    - a set of model tables related to a single data source.
+    - two types:
+      - Import:
+        - all _import storage mode_ tables including _calculated tables_.
+        - Only able to have one import source group in a model.
+      - DirectQuery:
+        - all DirectQuery storage mode tables related to a specific data source.
+  - composite models are made of multiple source groups.
+- DirectQuery model benefits:
+  - model large or fast-changing data sources:
+    - dont require refresh
+    - example of large volume is a data warehouse
+  - Enforce Source RLS:
+    - row-level security: RLS
+    - allows the source to enforce its own RLS
+    - only works for some databases
+    - requires setting up single sign-on for the dataset data source.
+  - data sovereignty restrictions:
+    - some data sources do not allow data to be imported or removed from the source location. DirectQuery enables access of the data without copying.
+  - Create specialized datasets:
+    - can connect to Power BI dataset (or ASS model) and convert to DirectQuery local model
+    - original dataset is considered remote
+    - new dataset considered local.
+    - can chain up to 3 models in this fashion.
+    - A form of inheritance or interfacing
+    - can extend the remote model by adding or modifying fields, tables, measures.
+    - extensions result in the formation of a composite model.
+- DirectQuery Model Limitations:
+  - does not support all data sources:
+    - only Major RDBMS, Power BI datasets, Azure Analysis Services models.
+  - Not all Power Query (M) transformations are possible:
+    - must be understood by source system
+    - i.e. pivot/unpivot not possible.
+  - Analytic queries can be slow if source systems are not optimized or resources are low.
+  - analytic queries are heavy and can impact source system performance as a whole.
+- Boost DirectQuery Model Performance:
+  - data source optimizations:
+  - indexing and materializing views.
+- DirectQuery User-Defined Aggregation Tables:
+  - User-defined aggregation tables:
+    - can be added to a DirectQuery model.
+    - special model table that are hidden.
+    - they are hidden from users, calculations and RLS
+    - best for satisfying higher-grain analytic queries over large fact tables.
+    - if set to DirectQuery, can query materialized views in datasource.
+    - can use import storage mode
+    - can use automatic aggregations.

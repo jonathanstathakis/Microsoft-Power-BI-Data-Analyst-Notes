@@ -1,0 +1,57 @@
+---
+url: https://learn.microsoft.com/en-us/training/modules/choose-power-bi-model-framework/3-determine-when-to-develop-import-model
+date_created: 2025-06-23 15:50
+---
+
+# Determine When to Develop an Import Model
+
+- intro:
+  - an import model is a table whose storage mode = Import.
+  - import models include calculated tables
+  - calculated tables are defined with a DAX formula.
+- Import model benefits:
+  - most common model framewoek
+  - default framework in Power BI
+  - support all _Power BI Source Types_.
+  - _Power BI Source Types_ include:
+    - databases
+    - files
+    - feeds
+    - web pages
+    - dataflows
+  - they are able to combine sources: related tables can source from different sources i.e. database, web page etc.
+  - Support DAX and Power Query (M)
+  - support calculated tables
+  - has the best query performance:
+    - data is cached
+    - data is optimized for analytic queries
+    - model is entirely in memory
+    - analytic queries include: filter, group, summarize.
+- Import Model Limitations:
+  - model size:
+    - published models are limited to 1GB (compressed)
+    - premium capacities are allowed > 10GB.
+    - important to reduce data in a model to only what is required.
+    - data reduction techniques include:
+      - remove superfluous columns/rows
+      - group by and summarize to raise _grain_ of fact tables
+      - optimize datatypes, preferencing numeric data.
+      - disable Power Query query load
+      - disable auto date/time
+      - use DirectQuery table storage
+  - data refresh:
+    - imported data needs to be refreshed
+    - can set up scheduled refreshes.
+    - consumers can perform an on-demand refresh.
+    - refreshing is limited:
+      - 8 times per day in _shared capacity_
+      - 48 times per day in _dedicated capacity_
+    - if need more often, use:
+      - DirectQuery
+      - a hybrid table
+      - use a real-time dataset.
+    - incremental refresh:
+      - refresh clears out all data and reloads it. This can be taxing
+      - incremental refresh can be used to create and manage time-period partitions
+      - can restrict refresh to the most time-sensitive partitions.
+      - can customize a partitioning strategy
