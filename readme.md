@@ -2,11 +2,11 @@
 
 My preparation for the [PL-300](learn.microsoft.com/en-us/credentials/certifications/data-analyst-associate/?practice-assessment-type=certification). The preparation consists of 5 modules, each consisting of a varying number of submodules. The modules are as follows:
 
-- [x] [01 - Get started with Microsoft data analytics](https://learn.microsoft.com/training/paths/data-analytics-microsoft/)
-- [x] [02 - Prepare data for analysis with Power BI](https://learn.microsoft.com/training/paths/prepare-data-power-bi/)
-- [ ] [03 - Model Data with Power BI](https://learn.microsoft.com/training/paths/model-data-power-bi/)
-- [ ] [04 - Design effective reports with Power BI](https://learn.microsoft.com/training/paths/power-bi-effective/)
-- [ ] [05 - Manage and secure Power BI](https://learn.microsoft.com/training/paths/manage-secure-power-bi/)
+- [x] [01 - Get started with Microsoft data analytics](./notes/01_get_started_with_microsoft_data_analytics.md)
+- [x] [02 - Prepare data for analysis with Power BI](./notes/02_prepare_data_for_analysis_with_power_bi.md)
+- [x] [03 - Model Data with Power BI](./notes/03_model_data_with_power_bi.md)
+- [ ] [04 - Design effective reports with Power BI](./notes/04_design_effective_reports_in-Power_bi.md)
+- [ ] [05 - Manage and secure Power BI](./notes/05_manage_and_secure_power_bi.md)
 
 I will aim to complete all modules by the end of November 2025. 3 weeks, plenty of time. Already finished the first 2. I think I can finish the following 3 by the end of the week tbh. So get "Model Data with Power BI" done by tomorrow night, "Design effective reports with Power BI" done midweek, and "Manage and secure Power BI" by the weekend.
 

@@ -1,8 +1,12 @@
-# 01 Configure a Semantic Model
+# 03 Model Data with Power BI
+
+- [URL](https://learn.microsoft.com/en-us/training/paths/model-data-power-bi/)
+
+## 01 Configure a Semantic Model
 
 Date of annotation: 2025-11-09
 
-## 01 Introduction
+### 01 Introduction
 
 - the semantic model is designed once Power Query queries are applied.
 - semantic model supports reporting requirements
@@ -14,7 +18,7 @@ Date of annotation: 2025-11-09
   2. setting table and column properties to enhance model design
   3. adding other model objects: hierarchies, measures, and parameters.
 
-## 02 Configure Relationships
+### 02 Configure Relationships
 
 Submodule summary: This submodule describes the basis and configuration of model table relationships. it touches on cross-filter configuration, cross-filter paths, active and inactive relationships and how to interpret and use the model diagram.
 
@@ -23,7 +27,7 @@ submodule introduction notes:
 - ensuring model table relationships are properly configured is important.
 - table filters can be propagated along relationships to other tables.
 
-### 01 Configure Data Load Options
+#### 01 Configure Data Load Options
 
 - _Data Load_ contains settings relevant to relationships.
 - options include: 'import relationships from data sources on first load', 'update or delete relationships when refreshing data', and 'autodetect new relationships after data is loaded.'
@@ -32,7 +36,7 @@ submodule introduction notes:
 - tables that are part of the model but don't need relationships to other tables are called _disconnected tables_.
 - A disconnected table can be used to support what-if scenarios, or for field parameters.
 
-### 02 Columns
+#### 02 Columns
 
 - Relationships consist of a 'from' column and a 'to' column
 - these two columns need to be of the same data type and contain unique values.
@@ -40,7 +44,7 @@ submodule introduction notes:
 - if a table has a multi-column key, it needs to be represented by an appropriate single key column that preserves the uniquness.
 - data types can be adjusted in Power Query.
 
-### 03 Understand Cardinality
+#### 03 Understand Cardinality
 
 - there are 4 kinds of relationships:
   - one-to-many
@@ -55,7 +59,7 @@ submodule introduction notes:
 - one-to-one less common as better design to combine tables with one-to-one relationship, reducing model complexity.
 - many-to-many used for more complex relationships, connecting across levels of granularity etc (JS - find more examples).
 
-### 04 Understand Cross Filter Direction
+#### 04 Understand Cross Filter Direction
 
 - part of relationship definition is cross-filter direction.
 - cross-filter direction defines how filters propagate.
@@ -69,7 +73,7 @@ submodule introduction notes:
 - both direction may be used in many-to-many analysis i.e. salespeople assigned to multiple regions, region can have multiple sales people.
 - a many-to-many analysis needs a bridging table containing the keys to both sides.
 
-### 05 Active vs. Inactive Relationships
+#### 05 Active vs. Inactive Relationships
 
 - one one filter propagation path can be active at any time.
 - if a model could contain multiple valid paths, one must be set to active and the others to inactive.
@@ -79,7 +83,7 @@ submodule introduction notes:
 - To enable multiple filtering by a role-playing dimension the relationship between the dimension and the fact table must be through bridging tables so that the relationships are distinct.
 - in the example above, `OrderDate` and `ShipDate` become `Order Date` and `Ship Date` and have active relationships to the fact table. The path becomes `Date/Order Date/Sales` and `Date/Ship Date/Sales` as opposed to two conflicting `Date/Sales`.
 
-### 06 Working with the Model Diagram
+#### 06 Working with the Model Diagram
 
 - model diagram
 - relationships are created by dragging and dropping the columns between tables.
@@ -89,9 +93,9 @@ submodule introduction notes:
 - active relationships are solid, inactive are dotted.
 - cursor hove over relationship shows the related columns.
 
-## 03 Configure Tables
+### 03 Configure Tables
 
-### 01 Configure Table Properties
+#### 01 Configure Table Properties
 
 - table configuration:
   - table configuration can be accessed from the ribbon, data pane, or model diagram (properties pane).
@@ -113,7 +117,7 @@ submodule introduction notes:
     - tables can be hidden from the Data pane.
     - developer specific objects such as bridging tables should be hidden.
 
-### 02 Mark Date Tables
+#### 02 Mark Date Tables
 
 - Auto date/time: automatically creates hidden date tables for each date/time column
 - bad practice (?) better to create own tables from source data or DAX calculated table when mark as date table.
@@ -123,11 +127,11 @@ submodule introduction notes:
 - on selection, the column will be validated.
 - validation requires: values are unique, no blank, values are contiguous from start to finish.
 
-## 04 Configure Columns
+### 04 Configure Columns
 
 This submodule discussed the various properties and configurations of columns.
 
-### 01 Intro
+#### 01 Intro
 
 - columns properties include: name, description, synonym, is hidden.
 - common to hide relationship columns especially when value is not meaningful.
@@ -138,22 +142,22 @@ This submodule discussed the various properties and configurations of columns.
 - display folders should be used if a table has many visible fields.
 - display folders are created by selecting the desired fields in the Data pane then adding the name in Properties pane / Display folder. This will then appear in the Data pane (wtf.)
 
-### 02 Configure Column Formatting
+#### 02 Configure Column Formatting
 
 - each column has a data type
 - data type is inherited from PQ
 - if data type changed in PBI, a change data type query is appended in PQ.
 
-### 03 Set Sort Order
+#### 03 Set Sort Order
 
 - PBI has natural sorting but custom sorting is achieved by setting Sort by Column property ( doesnt appear to be present in web app version).
 
-### 04 Categorize Data
+#### 04 Categorize Data
 
 - data categories are used for more complex data that is represented in a primative form i.e. spatial data represented by floats.
 - categorires help PBI better work with the data.
 
-### 05 Set Summarization
+#### 05 Set Summarization
 
 - Numeric columns have built-in summarization options.
 - choosing the `summarize by` determines how the column summarizes by default.
@@ -162,9 +166,9 @@ This submodule discussed the various properties and configurations of columns.
 - report authors can select summarization method when used by a visual.
 - meaures can further be used to determine how numeric columns are summarized.
 
-## 05 Configure Heirarchies
+### 05 Configure Heirarchies
 
-### 01 Intro
+#### 01 Intro
 
 - Hierarchies are optional.
 - Hierarchies model the hierarchy between columns of a table.
@@ -173,9 +177,9 @@ This submodule discussed the various properties and configurations of columns.
 - they provide a navigation path across the columns.
 - hierarchies can have descriptions, synonyms, display folders and 'is hidden'.
 
-## 06 Configure Measures
+### 06 Configure Measures
 
-### 01 Intro
+#### 01 Intro
 
 - complex summarization is achieved with a _measure_.
 - measures are named DAX formulas.
@@ -185,7 +189,7 @@ This submodule discussed the various properties and configurations of columns.
 - measures enable effective data visualisation.
 - _Copilot for PBI_ and _Quick measures_ can be used to generate measures.
 
-### 02 Use Quick Measures
+#### 02 Use Quick Measures
 
 - How to use Quick measures:
   - select a calculation template
@@ -195,14 +199,14 @@ This submodule discussed the various properties and configurations of columns.
 - measures can be reassigned to different tables with the "Home table" property.
 - Copilot can autogenerate descriptions based on the DAX formula.
 
-## 07 Configure Parameters
+### 07 Configure Parameters
 
-### 01 Intro
+#### 01 Intro
 
 - A _parameter_ can be used to change report settings like filters or calculations without modifying the data.
 - there are two types or parameterL: numeric range and fields.
 
-### 02 Create a Numeric Range Parameter
+#### 02 Create a Numeric Range Parameter
 
 - _Numeric range_ are like SQL sequences:
   - require a numeric data type
@@ -214,7 +218,7 @@ This submodule discussed the various properties and configurations of columns.
 - numeric range parameters can be used in what-if schenarios. i.e. they provide a range of values to perform calculations on, such as displaying the effect of changing a parameter in a calculation.
 - Parameters are displayed in the Data pane with a qustion mark (?).
 
-### 03 Create a Fields Parameter
+#### 03 Create a Fields Parameter
 
 - A _Fields_ parameter is a group of different fields.
 - Fields can be used in visuals and to establish slicers.
